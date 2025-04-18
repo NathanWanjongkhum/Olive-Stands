@@ -1,0 +1,28 @@
+// Database: group4_phaseii
+
+Table feedback {
+  Feedback_id int [pk, increment]
+  Game_id int
+  Comment varchar(255) [default: 'Type feedback here...']
+  Rating enum [note: '1, 2, 3, 4, or 5']
+}
+
+Table game {
+  Game_id int [pk, increment]
+  Game_name tinytext [not null]
+  Game_genre int
+  Game_Preview blob [default: null]
+  Game_Description varchar(255)
+  Game_Link tinytext
+  
+  Note: 'Game_Link must match pattern: ^https?://([a-zA-Z0-9-]+\\.)*olive-stands\\.com(/.*)?$'
+}
+
+Table genre {
+  Genre_id int [pk, increment]
+  Genre enum [note: 'Action, Adventure, RPG, Strategy, Simulation, Sports, Puzzle, Shooter, Platform, Racing, Fighting, Survival, Horror, MMO, MOBA, Card, Board, Other']
+}
+
+// Relationships
+Ref: feedback.Game_id > game.Game_id
+Ref: game.Game_genre > genre.Genre_id
