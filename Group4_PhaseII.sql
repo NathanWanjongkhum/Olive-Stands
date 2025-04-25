@@ -32,8 +32,9 @@ CREATE TABLE Users (
 -- Genre table
 CREATE TABLE Genre (
     Genre_id INT AUTO_INCREMENT PRIMARY KEY,
-    Genre ENUM('Action','Adventure','RPG','Strategy','Simulation','Sports','Puzzle','Shooter','Platform',
-                'Racing','Fighting','Survival','Horror','MMO','MOBA','Card','Board','Other') NOT NULL
+    Genre ENUM('Action','Adventure','RPG','Strategy','Simulation','Sports','Puzzle','Shooter','Platformer',
+                'Racing','Fighting','Survival','Horror','Tower Defense','Auto-Battler','Card','Board',
+                'Metroidvania', 'Souls-Like','Other') NOT NULL
 );
 
 -- Game table
@@ -69,6 +70,26 @@ CREATE TABLE Developers (
 
 
 -- Genre Data
+INSERT INTO Genre (Genre) VALUES ('Action');
+INSERT INTO Genre (Genre) VALUES ('Adventure');
+INSERT INTO Genre (Genre) VALUES ('RPG');
+INSERT INTO Genre (Genre) VALUES ('Strategy');
+INSERT INTO Genre (Genre) VALUES ('Simulation');
+INSERT INTO Genre (Genre) VALUES ('Sports');
+INSERT INTO Genre (Genre) VALUES ('Puzzle');
+INSERT INTO Genre (Genre) VALUES ('Shooter');
+INSERT INTO Genre (Genre) VALUES ('Platformer');
+INSERT INTO Genre (Genre) VALUES ('Racing');
+INSERT INTO Genre (Genre) VALUES ('Fighting');
+INSERT INTO Genre (Genre) VALUES ('Survival');
+INSERT INTO Genre (Genre) VALUES ('Horror');
+INSERT INTO Genre (Genre) VALUES ('Tower Defense');
+INSERT INTO Genre (Genre) VALUES ('Auto-Battler');
+INSERT INTO Genre (Genre) VALUES ('Card');
+INSERT INTO Genre (Genre) VALUES ('Board');
+INSERT INTO Genre (Genre) VALUES ('Metroidvania');
+INSERT INTO Genre (Genre) VALUES ('Souls-Like');
+INSERT INTO Genre (Genre) VALUES ('Other');
 
 
 -- Game Data
@@ -119,4 +140,25 @@ VALUES ('Holawrad', 2, NULL, 'A fun roguelike adventure game where the player ca
 
 
 -- Developers Data
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Luke Chung, Abraham Engebretson, Kylie Hammett, Kaely Willhite', 1);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Charankamal Brar, Jose Rodriguez, Shu-Ren Shen', 2);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Zachary Anderson, Reis Cook, Maple Gunn, Terence Trajano', 3);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Tyler Michael Cairney, Hai Duong, Reece Hoisington, Josh Kang', 4);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Bhavneet Bhargava, Binal Dhaliwal, Anagha Krishna', 5);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Matiullah Jalal, Jiameng Li, Arafa Mohamed, Gabriel Stupart', 6);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Liam Barragan, Anthony Petrov, Matthew Uzunoe-Chin, Minh Vu', 7);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Eva Howard, Simarpal Singh, Andrew Tran, Abby Worden', 8);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Mohammed Alhamed, Sean Giroux, Mathew Miller, Abby Yrojo', 9);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Mel Harvey, Quienten Miller, Claire Nguyen, Christina Situ', 10);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Edward Chung, Hamda Jama, Thomas Le, Brandon Ragghianti', 11);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Alex Ewing, Christian Pineda, Daniel Alberto Sanchez', 12);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Jayden Fausto, Eric John, Cynthia Lopez, Albert Meza', 13);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('William Chhiv, Adit Limbasia, Tyler Nguyen, Bao Trinh', 14);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Elias Emanuel Arriola, Ahmed Hassan, Faisal Nur, Mahri Yalkapova', 15);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Jafar Al-Salehi, Edison Chen, Ayub Mohamed, Jacob Waite', 16);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Faiz Ahmed, Aly Badr, Dmitry Khotinskiy, Elle Pavenko', 17);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Owen Crema, Bindi Tam Nguyen, Staci Ostrovski, Ares Zhang', 18);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Jian Azul, Dalton Miltimore, Yonas Omega', 19);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Ken Egawa, Andrew Hwang, Peter Madin, Sopheanith Ny', 20);
+INSERT INTO Developers (Dev_name, Game_id) VALUES ('Lwazi Mabota, Murad Tair, Alan To, Holden Tsang', 21);
 
