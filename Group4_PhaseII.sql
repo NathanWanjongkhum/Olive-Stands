@@ -67,8 +67,7 @@ CREATE TABLE Developers (
 );
 
 -- Users Data
-INSERT INTO Users (User_name, User_password)
-VALUES 
+INSERT INTO Users (User_name, User_password) VALUES 
 ('Abraham', 'password123'),
 ('Luke', 'password123'),
 ('Kylie', 'password123'),
@@ -151,95 +150,77 @@ VALUES
 ('Murad Tair', 'password123');
 
 -- Genre Data
-INSERT INTO Genre (Genre) VALUES ('Action');
-INSERT INTO Genre (Genre) VALUES ('Adventure');
-INSERT INTO Genre (Genre) VALUES ('RPG');
-INSERT INTO Genre (Genre) VALUES ('Strategy');
-INSERT INTO Genre (Genre) VALUES ('Simulation');
-INSERT INTO Genre (Genre) VALUES ('Sports');
-INSERT INTO Genre (Genre) VALUES ('Puzzle');
-INSERT INTO Genre (Genre) VALUES ('Shooter');
-INSERT INTO Genre (Genre) VALUES ('Platformer');
-INSERT INTO Genre (Genre) VALUES ('Racing');
-INSERT INTO Genre (Genre) VALUES ('Fighting');
-INSERT INTO Genre (Genre) VALUES ('Survival');
-INSERT INTO Genre (Genre) VALUES ('Horror');
-INSERT INTO Genre (Genre) VALUES ('Tower Defense');
-INSERT INTO Genre (Genre) VALUES ('Auto-Battler');
-INSERT INTO Genre (Genre) VALUES ('Card');
-INSERT INTO Genre (Genre) VALUES ('Board');
-INSERT INTO Genre (Genre) VALUES ('Metroidvania');
-INSERT INTO Genre (Genre) VALUES ('Souls-Like');
-INSERT INTO Genre (Genre) VALUES ('Other');
+INSERT INTO Genre (Genre) VALUES 
+('Action'),
+('Adventure'),
+('RPG'),
+('Strategy'),
+('Simulation'),
+('Sports'),
+('Puzzle'),
+('Shooter'),
+('Platformer'),
+('Racing'),
+('Fighting'),
+('Survival'),
+('Horror'),
+('Tower Defense'),
+('Auto-Battler'),
+('Card'),
+('Board'),
+('Metroidvania'),
+('Souls-Like'),
+('Other');
 
 
 -- Game Data
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Grandmas vs. Unhappiness', 15, NULL, 'Grandmas make it their mission to make all the unhappy people in their town happy in auto-battler/auto-chess style combat.', 'https://westerntoad.github.io/tcss491-project/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Stickman - The Savior', 1, NULL, 'David, despite financial problems, lived a simple and happy life with his daughter Mia. One night, while David was away, the Shadow King’s minions destroyed their home. They kidnapped Mia, leaving only a note: ''You will find her in the Obsidian Tower. David must fight to save his daughter!', ' https://joser27.github.io/TCSS491-GameProject/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Frost Arena', 15, NULL, 'A turn-based autobattler set in a wintery wasteland. Hire mercenaries to build strategic teams and try to survive to 10 wins.', 'https://maplesugarstone.github.io/Game-Project-Black-4/ ');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Godspeed Breacher', 18, NULL, 'You are a Breacher, tasked with scouting out alternate dimensions in the hopes of finding one that''s hospitable for humans. But during one of your routine missions, something goes terribly wrong. You are now stranded in an alternate, hostile dimension, and must recover the lost pieces of your suit to get back home.', 'https://justsomeguy80.github.io/TCSS491GP/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Flap Away', 1, NULL, 'Flap Away is a fresh take on the classic Flappy Bird, introducing exciting new mechanics, power-ups, and levels. Navigate through moving pipes, dodge hazards, and collect coins to unlock special abilities. Face off against challenging boss battles, customized bird with unique colors, and experience diverse aesthetics for each level that make every run feel rewarding. The longer you survive, the tougher the challenge—how far can you go?', 'https://anaghakris.github.io/Flap-Away/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Red1Racer', 10, NULL, 'Fast-paced 2D top-down racing combat game where players navigate intense tracks, dodge obstacles, and battle enemy racers. Featuring a bidding system, a dynamic boss fights, power-ups, and a shop system for upgrades, the game challenges players to master speed and strategy to reach the finish line. ', 'https://gstupart.github.io/Red1Racer/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Battle of the Gauntlet', 9, NULL, 'Game where players choose between three main characters: the Marksman, Mage, or Warrior. Players navigate various levels filled with enemies like Pirates, Ghost Pirate Crews, and a Pirate Captain. Along the way, they collect coins, hearts, and chests to boost their score and survive. There are a total of 18 scenes including 2 bosses.', 'https://mattuzuchin.github.io/tcss491-blue2/ ');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Dough or Die', 1, NULL, 'You are a pizza shop worker who must go outside and fight ingredient monsters in order to get ingredients to fulfill pizza orders. ', 'https://eva7960.github.io/DoughOrDie/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Ash and the Ashes', 2, NULL, 'Ash, sole village survivor must venture out to take revenge on the entity that burned her village to the ground. Collect the ashes of your friends and family, defeat enemies, fight a boss!', 'https://acsegio.github.io/Black-3s-Ashes-Final/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Soy Much Sushi!', 5, NULL, 'Overwhelmed by frustration and burnout, a computer science student rediscovers passion and purpose through the art of sushi-making, embracing their past to shape their future.', 'https://mellancholy.github.io/TCSS-491-Game/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Echoes of Divinity', 19, NULL, 'Inspired by FromSoftware''s legendary Soulsborne games, Echoes of Divinity is about a Knight who is fighting to save the world. Battle through enemies, upgrade yourself, and overcome challenging bosses to save the world!', 'https://braggs03.github.io/TCSS-491-Echoes-of-Divinity/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Duality', 9, NULL, 'Adam is in dire need of a vacation. In this 2D Puzzle-Platformer, use his ability to shift between realities to solve puzzles and traverse the city to find a good vacation spot. The game contains 3 levels with 3 puzzles each.', 'https://amadhatter03.github.io/Duality');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Horror Hideout', 14, NULL, 'You''re stuck in the dark woods and need to survive till help arrives. Mine resources and summon friends to help you survive 10 nights and defeat the boss.', 'https://cyntlopez.github.io/HorrorTowerBuilder/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Mega Maze Mayhem', 20, NULL, 'Join Mega Man as he navigates through a labyrinth filled with dangerous enemies to find the exit', 'https://baott05.github.io/webGame/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('The Path To F.A.M.E.', 1, NULL, '"The Path to F.A.M.E." is a side-scrolling action game where players choose between four unique characters, each with distinct combat abilities, to battle through challenging levels filled with minions and bosses. Players can defeat bosses using a combination of close-range attacks, projectiles to navigate diverse environments from spaceships to nighttime cityscapes.', ' https://am-h.github.io/The-Path-to-F.A.M.E/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Rising Knight', 1, NULL, 'Rising Knight is a top down RPG combat game where the player must defeat all enemies in order to achieve total victory.', 'https://jacobwaite.github.io/Game-Design/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Shonen Sprint', 1, NULL, 'Inspired by extreme pamplona, Shonen sprint has players play as famous anime characters and run away from infamous villians throuh different levels.', 'https://pr1nceali.github.io/Shonen-Sprint/index.html');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Cursed Revolver', 2, NULL, 'In a distant frontier, a cowboy stops for a drink—only to have it stolen and his revolver cursed by a rogue wizard. Now, he’s out for revenge, battling through ruthless deserts, dark caves, and deadly wildlife, and more. Wield magic-infused gunplay, combine spells for devastating effect, and fight your way to the final showdown!', 'https://ocrema.github.io/Cursed-Revolver/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('re:connect', 20, NULL, 're:connect  is a nostalgic journey into retro computing, featuring a collection of challenging minigames wrapped in a classic green terminal interface. Navigate through unique trials that test your reflexes, memory, problem-solving, and typing skills. Complete all trials to win, but be careful - three failures and it''s game over! The glowing green text, scan lines, and digital effects create an authentic terminal experience that captures the charm of early computing while delivering varied gameplay challenges.', 'https://yonasomega.github.io/TCSS491_GameProject/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Project P.A.K.S', 9, NULL, 'A 2D level-based precision platformer inspired by N++ and Super Meat Boy, with 7 levels. Get to the elevator, get to the top.', 'https://wahgew.github.io/Project-PAKS-TCSS-491/');
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link)
-VALUES ('Holawrad', 2, NULL, 'A fun roguelike adventure game where the player can fight waves of enemies and become powerful enough to beat a strong final foe, ????. Players will die, but they’ll learn new builds and different moves of new foes with each death! The game has 4 levels with unique bosses at the end of them. There’s also a shop where players can upgrade themselves. Through upgrades, players are also given unique combos that they can do with their util/abilities!', 'https://lwazi71.github.io/491-SurvivorGame/');
+INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link) VALUES 
+('Grandmas vs. Unhappiness', 15, NULL, 'Grandmas make it their mission to make all the unhappy people in their town happy in auto-battler/auto-chess style combat.', 'https://westerntoad.github.io/tcss491-project/'),
+('Stickman - The Savior', 1, NULL, 'David, despite financial problems, lived a simple and happy life with his daughter Mia. One night, while David was away, the Shadow King’s minions destroyed their home. They kidnapped Mia, leaving only a note: ''You will find her in the Obsidian Tower. David must fight to save his daughter!', ' https://joser27.github.io/TCSS491-GameProject/'),
+('Frost Arena', 15, NULL, 'A turn-based autobattler set in a wintery wasteland. Hire mercenaries to build strategic teams and try to survive to 10 wins.', 'https://maplesugarstone.github.io/Game-Project-Black-4/ '),
+('Godspeed Breacher', 18, NULL, 'You are a Breacher, tasked with scouting out alternate dimensions in the hopes of finding one that''s hospitable for humans. But during one of your routine missions, something goes terribly wrong. You are now stranded in an alternate, hostile dimension, and must recover the lost pieces of your suit to get back home.', 'https://justsomeguy80.github.io/TCSS491GP/'),
+('Flap Away', 1, NULL, 'Flap Away is a fresh take on the classic Flappy Bird, introducing exciting new mechanics, power-ups, and levels. Navigate through moving pipes, dodge hazards, and collect coins to unlock special abilities. Face off against challenging boss battles, customized bird with unique colors, and experience diverse aesthetics for each level that make every run feel rewarding. The longer you survive, the tougher the challenge—how far can you go?', 'https://anaghakris.github.io/Flap-Away/'),
+('Red1Racer', 10, NULL, 'Fast-paced 2D top-down racing combat game where players navigate intense tracks, dodge obstacles, and battle enemy racers. Featuring a bidding system, a dynamic boss fights, power-ups, and a shop system for upgrades, the game challenges players to master speed and strategy to reach the finish line. ', 'https://gstupart.github.io/Red1Racer/'),
+('Battle of the Gauntlet', 9, NULL, 'Game where players choose between three main characters: the Marksman, Mage, or Warrior. Players navigate various levels filled with enemies like Pirates, Ghost Pirate Crews, and a Pirate Captain. Along the way, they collect coins, hearts, and chests to boost their score and survive. There are a total of 18 scenes including 2 bosses.', 'https://mattuzuchin.github.io/tcss491-blue2/ '),
+('Dough or Die', 1, NULL, 'You are a pizza shop worker who must go outside and fight ingredient monsters in order to get ingredients to fulfill pizza orders. ', 'https://eva7960.github.io/DoughOrDie/'),
+('Ash and the Ashes', 2, NULL, 'Ash, sole village survivor must venture out to take revenge on the entity that burned her village to the ground. Collect the ashes of your friends and family, defeat enemies, fight a boss!', 'https://acsegio.github.io/Black-3s-Ashes-Final/'),
+('Soy Much Sushi!', 5, NULL, 'Overwhelmed by frustration and burnout, a computer science student rediscovers passion and purpose through the art of sushi-making, embracing their past to shape their future.', 'https://mellancholy.github.io/TCSS-491-Game/'),
+('Echoes of Divinity', 19, NULL, 'Inspired by FromSoftware''s legendary Soulsborne games, Echoes of Divinity is about a Knight who is fighting to save the world. Battle through enemies, upgrade yourself, and overcome challenging bosses to save the world!', 'https://braggs03.github.io/TCSS-491-Echoes-of-Divinity/'),
+('Duality', 9, NULL, 'Adam is in dire need of a vacation. In this 2D Puzzle-Platformer, use his ability to shift between realities to solve puzzles and traverse the city to find a good vacation spot. The game contains 3 levels with 3 puzzles each.', 'https://amadhatter03.github.io/Duality'),
+('Horror Hideout', 14, NULL, 'You''re stuck in the dark woods and need to survive till help arrives. Mine resources and summon friends to help you survive 10 nights and defeat the boss.', 'https://cyntlopez.github.io/HorrorTowerBuilder/'),
+('Mega Maze Mayhem', 20, NULL, 'Join Mega Man as he navigates through a labyrinth filled with dangerous enemies to find the exit', 'https://baott05.github.io/webGame/'),
+('The Path To F.A.M.E.', 1, NULL, '"The Path to F.A.M.E." is a side-scrolling action game where players choose between four unique characters, each with distinct combat abilities, to battle through challenging levels filled with minions and bosses. Players can defeat bosses using a combination of close-range attacks, projectiles to navigate diverse environments from spaceships to nighttime cityscapes.', ' https://am-h.github.io/The-Path-to-F.A.M.E/'),
+('Rising Knight', 1, NULL, 'Rising Knight is a top down RPG combat game where the player must defeat all enemies in order to achieve total victory.', 'https://jacobwaite.github.io/Game-Design/'),
+('Shonen Sprint', 1, NULL, 'Inspired by extreme pamplona, Shonen sprint has players play as famous anime characters and run away from infamous villians throuh different levels.', 'https://pr1nceali.github.io/Shonen-Sprint/index.html'),
+('Cursed Revolver', 2, NULL, 'In a distant frontier, a cowboy stops for a drink—only to have it stolen and his revolver cursed by a rogue wizard. Now, he’s out for revenge, battling through ruthless deserts, dark caves, and deadly wildlife, and more. Wield magic-infused gunplay, combine spells for devastating effect, and fight your way to the final showdown!', 'https://ocrema.github.io/Cursed-Revolver/'),
+('re:connect', 20, NULL, 're:connect  is a nostalgic journey into retro computing, featuring a collection of challenging minigames wrapped in a classic green terminal interface. Navigate through unique trials that test your reflexes, memory, problem-solving, and typing skills. Complete all trials to win, but be careful - three failures and it''s game over! The glowing green text, scan lines, and digital effects create an authentic terminal experience that captures the charm of early computing while delivering varied gameplay challenges.', 'https://yonasomega.github.io/TCSS491_GameProject/'),
+('Project P.A.K.S', 9, NULL, 'A 2D level-based precision platformer inspired by N++ and Super Meat Boy, with 7 levels. Get to the elevator, get to the top.', 'https://wahgew.github.io/Project-PAKS-TCSS-491/')
+('Holawrad', 2, NULL, 'A fun roguelike adventure game where the player can fight waves of enemies and become powerful enough to beat a strong final foe, ????. Players will die, but they’ll learn new builds and different moves of new foes with each death! The game has 4 levels with unique bosses at the end of them. There’s also a shop where players can upgrade themselves. Through upgrades, players are also given unique combos that they can do with their util/abilities!', 'https://lwazi71.github.io/491-SurvivorGame/');
 
 -- Feedback Data
 
 
 -- Developers Data
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Luke Chung, Abraham Engebretson, Kylie Hammett, Kaely Willhite', 1);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Charankamal Brar, Jose Rodriguez, Shu-Ren Shen', 2);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Zachary Anderson, Reis Cook, Maple Gunn, Terence Trajano', 3);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Tyler Michael Cairney, Hai Duong, Reece Hoisington, Josh Kang', 4);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Bhavneet Bhargava, Binal Dhaliwal, Anagha Krishna', 5);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Matiullah Jalal, Jiameng Li, Arafa Mohamed, Gabriel Stupart', 6);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Liam Barragan, Anthony Petrov, Matthew Uzunoe-Chin, Minh Vu', 7);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Eva Howard, Simarpal Singh, Andrew Tran, Abby Worden', 8);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Mohammed Alhamed, Sean Giroux, Mathew Miller, Abby Yrojo', 9);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Mel Harvey, Quienten Miller, Claire Nguyen, Christina Situ', 10);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Edward Chung, Hamda Jama, Thomas Le, Brandon Ragghianti', 11);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Alex Ewing, Christian Pineda, Daniel Alberto Sanchez', 12);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Jayden Fausto, Eric John, Cynthia Lopez, Albert Meza', 13);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('William Chhiv, Adit Limbasia, Tyler Nguyen, Bao Trinh', 14);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Elias Emanuel Arriola, Ahmed Hassan, Faisal Nur, Mahri Yalkapova', 15);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Jafar Al-Salehi, Edison Chen, Ayub Mohamed, Jacob Waite', 16);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Faiz Ahmed, Aly Badr, Dmitry Khotinskiy, Elle Pavenko', 17);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Owen Crema, Bindi Tam Nguyen, Staci Ostrovski, Ares Zhang', 18);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Jian Azul, Dalton Miltimore, Yonas Omega', 19);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Ken Egawa, Andrew Hwang, Peter Madin, Sopheanith Ny', 20);
-INSERT INTO Developers (Dev_name, Game_id) VALUES ('Lwazi Mabota, Murad Tair, Alan To, Holden Tsang', 21);
+INSERT INTO Developers (Dev_name, Game_id) VALUES 
+('Luke Chung, Abraham Engebretson, Kylie Hammett, Kaely Willhite', 1),
+('Charankamal Brar, Jose Rodriguez, Shu-Ren Shen', 2),
+('Zachary Anderson, Reis Cook, Maple Gunn, Terence Trajano', 3),
+('Tyler Michael Cairney, Hai Duong, Reece Hoisington, Josh Kang', 4),
+('Bhavneet Bhargava, Binal Dhaliwal, Anagha Krishna', 5),
+('Matiullah Jalal, Jiameng Li, Arafa Mohamed, Gabriel Stupart', 6),
+('Liam Barragan, Anthony Petrov, Matthew Uzunoe-Chin, Minh Vu', 7),
+('Eva Howard, Simarpal Singh, Andrew Tran, Abby Worden', 8),
+('Mohammed Alhamed, Sean Giroux, Mathew Miller, Abby Yrojo', 9),
+('Mel Harvey, Quienten Miller, Claire Nguyen, Christina Situ', 10),
+('Edward Chung, Hamda Jama, Thomas Le, Brandon Ragghianti', 11),
+('Alex Ewing, Christian Pineda, Daniel Alberto Sanchez', 12),
+('Jayden Fausto, Eric John, Cynthia Lopez, Albert Meza', 13),
+('William Chhiv, Adit Limbasia, Tyler Nguyen, Bao Trinh', 14),
+('Elias Emanuel Arriola, Ahmed Hassan, Faisal Nur, Mahri Yalkapova', 15),
+('Jafar Al-Salehi, Edison Chen, Ayub Mohamed, Jacob Waite', 16),
+('Faiz Ahmed, Aly Badr, Dmitry Khotinskiy, Elle Pavenko', 17),
+('Owen Crema, Bindi Tam Nguyen, Staci Ostrovski, Ares Zhang', 18),
+('Jian Azul, Dalton Miltimore, Yonas Omega', 19),
+('Ken Egawa, Andrew Hwang, Peter Madin, Sopheanith Ny', 20),
+('Lwazi Mabota, Murad Tair, Alan To, Holden Tsang', 21);
 
