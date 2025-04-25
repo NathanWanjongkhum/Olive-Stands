@@ -198,21 +198,21 @@ INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Li
 ('Holawrad', 2, NULL, 'A fun roguelike adventure game where the player can fight waves of enemies and become powerful enough to beat a strong final foe, ????. Players will die, but they’ll learn new builds and different moves of new foes with each death! The game has 4 levels with unique bosses at the end of them. There’s also a shop where players can upgrade themselves. Through upgrades, players are also given unique combos that they can do with their util/abilities!', 'https://lwazi71.github.io/491-SurvivorGame/');
 
 -- Feedback Data
-INSERT INTO Feedback (User_id, Game_id, Comment, Rating) VALUES
-(0, 0, 'Surprisingly strategic and endlessly charming—nothing beats watching grandmas brawl their way to happiness.', '5')
-(1, 1, 'Solid story and decent combat, but the pacing drags and some mechanics feel underdeveloped.', '3')
-(2, 2, 'Cool concept and setting, but the gameplay gets repetitive fast and lacks meaningful progression.', '2')
-(3, 3, 'Flap Away revitalizes the endless flyer genre with creative mechanics, vibrant level design, and surprisingly tense boss fights. It''s a challenging yet rewarding experience that keeps you coming back for just one more run.', '4')
-(4, 4, 'The concept has potential, but the chaotic pacing and clunky controls make it more frustrating than fun. Even with upgrades and boss fights, it struggles to stay engaging for long.', '2')
-(5, 4, 'A promising idea buried under poor execution—awkward controls and uneven pacing make it hard to enjoy. Even the flashy features can''t save it from feeling like a chore.', '1')
-(6, 4, 'Unpolished and frustrating, this game squanders its potential with messy gameplay and a lack of cohesion. It’s more exhausting than entertaining.', '1')
-(7, 5, 'A decent adventure with varied characters and enemies, but the gameplay feels repetitive after a while. The lack of depth in upgrades and progression makes it hard to stay invested.', '3')
-(8, 6, 'A quirky and fun blend of pizza-making and monster fighting! The creative concept and engaging gameplay make it a surprisingly addictive experience.', '5')
-(9, 7, 'A deeply emotional and action-packed journey, where the quest for revenge is as thrilling as it is heartbreaking. The combat and story come together to create an unforgettable experience.', '5')
-(10, 8, 'A heartfelt story of rediscovery, though it feels a bit slow at times. The sushi-making concept adds a unique twist, but the pacing struggles to keep the momentum going.', '3')
-(11, 8, 'A refreshing take on overcoming burnout, blending a heartfelt narrative with the therapeutic art of sushi-making. While the pacing is solid, it could dive deeper into character development for an even more impactful experience.', '4')
-(12, 9, 'Echoes of Divinity captures the intense challenge and atmosphere of Soulsborne games, with satisfying combat and tough bosses. While it excels in difficulty and design, a bit more innovation could elevate it further.', '4')
-(12, 10, 'A cool concept with reality-shifting mechanics, but the puzzles feel too simple and repetitive. It lacks the depth needed to keep you engaged for long.', '2')
+INSERT INTO Feedback (Game_id, Comment, Rating) VALUES
+(0, 'Surprisingly strategic and endlessly charming—nothing beats watching grandmas brawl their way to happiness.', '5')
+(1, 'Solid story and decent combat, but the pacing drags and some mechanics feel underdeveloped.', '3')
+(2, 'Cool concept and setting, but the gameplay gets repetitive fast and lacks meaningful progression.', '2')
+(3, 'Flap Away revitalizes the endless flyer genre with creative mechanics, vibrant level design, and surprisingly tense boss fights. It''s a challenging yet rewarding experience that keeps you coming back for just one more run.', '4')
+(4, 'The concept has potential, but the chaotic pacing and clunky controls make it more frustrating than fun. Even with upgrades and boss fights, it struggles to stay engaging for long.', '2')
+(4, 'A promising idea buried under poor execution—awkward controls and uneven pacing make it hard to enjoy. Even the flashy features can''t save it from feeling like a chore.', '1')
+(4, 'Unpolished and frustrating, this game squanders its potential with messy gameplay and a lack of cohesion. It’s more exhausting than entertaining.', '1')
+(5, 'A decent adventure with varied characters and enemies, but the gameplay feels repetitive after a while. The lack of depth in upgrades and progression makes it hard to stay invested.', '3')
+(6, 'A quirky and fun blend of pizza-making and monster fighting! The creative concept and engaging gameplay make it a surprisingly addictive experience.', '5')
+(7, 'A deeply emotional and action-packed journey, where the quest for revenge is as thrilling as it is heartbreaking. The combat and story come together to create an unforgettable experience.', '5')
+(8, 'A heartfelt story of rediscovery, though it feels a bit slow at times. The sushi-making concept adds a unique twist, but the pacing struggles to keep the momentum going.', '3')
+(8, 'A refreshing take on overcoming burnout, blending a heartfelt narrative with the therapeutic art of sushi-making. While the pacing is solid, it could dive deeper into character development for an even more impactful experience.', '4')
+(9, 'Echoes of Divinity captures the intense challenge and atmosphere of Soulsborne games, with satisfying combat and tough bosses. While it excels in difficulty and design, a bit more innovation could elevate it further.', '4')
+(10, 'A cool concept with reality-shifting mechanics, but the puzzles feel too simple and repetitive. It lacks the depth needed to keep you engaged for long.', '2')
 
 
 -- Developers Data
