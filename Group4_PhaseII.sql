@@ -239,3 +239,33 @@ INSERT INTO Developers (Dev_name, Game_id) VALUES
 ('Ken Egawa, Andrew Hwang, Peter Madin, Sopheanith Ny', 20),
 ('Lwazi Mabota, Murad Tair, Alan To, Holden Tsang', 21);
 
+-- 10 Meaningful SQL Queries --
+-- 1: Join at least three tables using JOIN ON
+
+
+-- 2: Use nested queries with IN, ANY, or ALL and include a GROUP BY clause
+
+
+-- 3: A correlated subquery with appropriate aliasing
+
+
+-- 4: Use a FULL OUTER JOIN
+
+
+-- 5: Use a set operation: UNION, EXCEPT, or INTERSECT (verify DBMS support)
+
+
+-- 6: Your own non-trivial queries using at least two tables
+
+
+-- 7: Your own non-trivial queries using at least two tables
+
+
+-- 8: Your own non-trivial queries using at least two tables
+
+
+-- 9: A non-trivial query using at least three tables
+
+
+-- 10: A non-trivial query using at least three tables with aliasing/renaming
+
