@@ -7,7 +7,7 @@ CREATE TABLE Users (
     User_id INT AUTO_INCREMENT PRIMARY KEY,
     User_name VARCHAR(100) NOT NULL,
     User_password VARCHAR(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- Genre table
 CREATE TABLE Genre (
