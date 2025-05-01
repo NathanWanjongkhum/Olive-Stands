@@ -6,7 +6,8 @@
 CREATE TABLE User (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     `Name` VARCHAR(100) NOT NULL,
-    `Password` VARCHAR(100) NOT NULL
+    `Password` VARCHAR(100) NOT NULL,
+    CONSTRAINT valid_pw_length CHECK (LENGTH(`Password`) >= 8) -- Checks if password is at least 8 characters long
 );
 
 -- Genre table
@@ -25,6 +26,8 @@ CREATE TABLE Game (
     Preview BLOB DEFAULT NULL,  -- IMAGE type replaced with BLOB
     `Description` VARCHAR(1000),
     Link TINYTEXT,
+    CONSTRAINT valid_game_name CHECK (TRIM(`Name`) != ''), -- Checks if the game's name does not have only whitespaces
+    CONSTRAINT valid_link CHECK (Link LIKE 'https://%.github.io%'), -- Checks if the link is a GitHub link
     CONSTRAINT game_ibfk_1 FOREIGN KEY (Genre) REFERENCES Genre(ID)
 );
 
@@ -33,8 +36,9 @@ CREATE TABLE Feedback (
     User_ID INT,
     Game_ID INT,
     Comment VARCHAR(1000) DEFAULT 'Type feedback here…',
-    Rating ENUM('1', '2', '3', '4', '5'),
+    Rating INT,
     PRIMARY KEY (User_ID, Game_ID),
+    CONSTRAINT valid_rating CHECK (Rating >= 1 AND Rating <= 5), -- Checks if the rating is between 1 and 5
     CONSTRAINT feedback_ibfk_1 FOREIGN KEY (Game_ID) REFERENCES Game(ID),
     CONSTRAINT feedback_ibfk_2 FOREIGN KEY (User_ID) REFERENCES Users(ID)
 );
@@ -308,13 +312,21 @@ Expected Output:
 
 /* 
 Query 9: A non-trivial query using at least three tables
-Purpose: 
-Expected Output: 
+Purpose: Selects all reviews from games made by Christian Pineda
+Expected Output: Returns a table with all Feedback tuples that satisfy the conditions
 */
+SELECT * FROM Feedback as F
+JOIN Game as G ON G.ID = F.Game_ID
+JOIN Developers as D ON D.Game_ID = G.ID
+WHERE D.`Name` = 'Christian Pineda';
 
 
 /* 
 Query 10: A non-trivial query using at least three tables with aliasing/renaming
-Purpose: 
-Expected Output: 
+Purpose: Selects all usernames that rated the game 'Duality' 5 stars
+Expected Output: Returns a table with one attribute 'Usernames' which contains all names from Users that satisfy the conditions
 */
+SELECT U.`Name` AS Usernames FROM Users AS U
+JOIN Feedback AS F ON F.User_ID = U.ID
+JOIN Game AS G ON G.ID = F.Game_ID
+WHERE F.Rating = 5 AND G.`Name` = 'Duality';
