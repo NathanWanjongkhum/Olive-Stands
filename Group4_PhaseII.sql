@@ -222,24 +222,54 @@ INSERT INTO Developers (`Name`, Game_ID) VALUES
 -- 10 Meaningful SQL Queries --
 /* 
 Query 1: Join at least three tables using JOIN ON
-Purpose: 
-Expected Output: 
+Purpose: Display all games with their genre, average rating, and description.
+Expected Output: Each row will show the game name, its genre, description, and the average
+         user rating (if rated).
 */
-
+SELECT 
+    Game.Name AS Game_Name,
+    Genre.Genre AS Genre,
+    Game.Description,
+    AVG(CAST(Feedback.Rating AS DECIMAL)) AS Average_Rating
+FROM Game
+JOIN Genre ON Game.Genre = Genre.ID
+LEFT JOIN Feedback ON Game.ID = Feedback.Game_ID
+GROUP BY Game.ID, Game.Name, Genre.Genre, Game.Description;
 
 /* 
 Query 2: Use nested queries with IN, ANY, or ALL and include a GROUP BY clause
-Purpose: 
-Expected Output: 
+Purpose: List genres that have at least one game with an average rating of 4 or higher.
+Expected Output: Genre names associated with well-rated games.
 */
-
+SELECT Genre.Genre
+FROM Genre
+WHERE Genre.ID IN (
+    SELECT Game.Genre
+    FROM Game
+    JOIN Feedback ON Game.ID = Feedback.Game_ID
+    GROUP BY Game.Genre
+    HAVING AVG(CAST(Feedback.Rating AS DECIMAL)) >= 4
+);
 
 /* 
 Query 3: A correlated subquery with appropriate aliasing
-Purpose: 
-Expected Output: 
+Purpose: Show each game along with its highest user rating and the name of the user who gave it.
+Expected Output: Each row lists the game name, highest rating, and user who gave it.
+Note: The inner subquery still uses an alias (Feedback2), this is required because I am referencing 
+      the same table twice in one query.
 */
-
+SELECT 
+    Game.Name AS Game_Name,
+    Feedback.Rating AS Highest_Rating,
+    User.Name AS User_Name
+FROM Feedback
+JOIN Game ON Game.ID = Feedback.Game_ID
+JOIN User ON User.ID = Feedback.User_ID
+WHERE Feedback.Rating = (
+    SELECT MAX(CAST(Feedback2.Rating AS DECIMAL))
+    FROM Feedback AS Feedback2
+    WHERE Feedback2.Game_ID = Feedback.Game_ID
+);
 
 /* 
 Query 4: Use a FULL OUTER JOIN
