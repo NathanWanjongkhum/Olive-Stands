@@ -2,16 +2,16 @@
 --
 -- --------------------------------------------------------
 
--- Users table
-CREATE TABLE Users (
-    User_id INT AUTO_INCREMENT PRIMARY KEY,
-    User_name VARCHAR(100) NOT NULL,
-    User_password VARCHAR(100) NOT NULL
+-- User table
+CREATE TABLE User (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    `Name` VARCHAR(100) NOT NULL,
+    `Password` VARCHAR(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Genre table
 CREATE TABLE Genre (
-    Genre_id INT AUTO_INCREMENT PRIMARY KEY,
+    ID INT AUTO_INCREMENT PRIMARY KEY,
     Genre ENUM('Action','Adventure','RPG','Strategy','Simulation','Sports','Puzzle','Shooter','Platformer',
                 'Racing','Fighting','Survival','Horror','Tower Defense','Auto-Battler','Card','Board',
                 'Metroidvania', 'Souls-Like','Other') NOT NULL
@@ -19,35 +19,35 @@ CREATE TABLE Genre (
 
 -- Game table
 CREATE TABLE Game (
-    Game_id INT AUTO_INCREMENT PRIMARY KEY,
-    Game_name TINYTEXT NOT NULL,
-    Game_genre INT,
-    Game_Preview BLOB DEFAULT NULL,  -- IMAGE type replaced with BLOB
-    Game_Description VARCHAR(1000),
-    Game_Link TINYTEXT,
-    CONSTRAINT game_ibfk_1 FOREIGN KEY (Game_genre) REFERENCES Genre(Genre_id)
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    `Name` TINYTEXT NOT NULL,
+    Genre INT,
+    Preview BLOB DEFAULT NULL,  -- IMAGE type replaced with BLOB
+    `Description` VARCHAR(1000),
+    Link TINYTEXT,
+    CONSTRAINT game_ibfk_1 FOREIGN KEY (Genre) REFERENCES Genre(ID)
 );
 
 -- Feedback table
 CREATE TABLE Feedback (
-    User_id INT,
-    Game_id INT,
+    User_ID INT,
+    Game_ID INT,
     Comment VARCHAR(1000) DEFAULT 'Type feedback here…',
     Rating ENUM('1', '2', '3', '4', '5'),
-    PRIMARY KEY (User_id, Game_id),
-    CONSTRAINT feedback_ibfk_1 FOREIGN KEY (Game_id) REFERENCES Game(Game_id),
-    CONSTRAINT feedback_ibfk_2 FOREIGN KEY (User_id) REFERENCES Users(User_id)
+    PRIMARY KEY (User_ID, Game_ID),
+    CONSTRAINT feedback_ibfk_1 FOREIGN KEY (Game_ID) REFERENCES Game(ID),
+    CONSTRAINT feedback_ibfk_2 FOREIGN KEY (User_ID) REFERENCES Users(ID)
 );
 
 -- Developers table
 CREATE TABLE Developers (
-    Dev_name VARCHAR(100) PRIMARY KEY,
-    Game_id INT,
-    CONSTRAINT developers_ibfk_1 FOREIGN KEY (Game_id) REFERENCES Game(Game_id)
+    `Name` VARCHAR(100) PRIMARY KEY,
+    Game_ID INT,
+    CONSTRAINT developers_ibfk_1 FOREIGN KEY (Game_ID) REFERENCES Game(ID)
 );
 
 -- Users Data
-INSERT INTO Users (User_name, User_password) VALUES 
+INSERT INTO Users (`Name`, `Password`) VALUES 
 ('Abraham', 'password123'),
 ('Luke', 'password123'),
 ('Kylie', 'password123'),
@@ -154,7 +154,7 @@ INSERT INTO Genre (Genre) VALUES
 
 
 -- Game Data
-INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Link) VALUES 
+INSERT INTO Game (`Name`, Genre, Preview, `Description`, Link) VALUES 
 ('Grandmas vs. Unhappiness', 15, NULL, 'Grandmas make it their mission to make all the unhappy people in their town happy in auto-battler/auto-chess style combat.', 'https://westerntoad.github.io/tcss491-project/'),
 ('Stickman - The Savior', 1, NULL, 'David, despite financial problems, lived a simple and happy life with his daughter Mia. One night, while David was away, the Shadow King’s minions destroyed their home. They kidnapped Mia, leaving only a note: ''You will find her in the Obsidian Tower. David must fight to save his daughter!', ' https://joser27.github.io/TCSS491-GameProject/'),
 ('Frost Arena', 15, NULL, 'A turn-based autobattler set in a wintery wasteland. Hire mercenaries to build strategic teams and try to survive to 10 wins.', 'https://maplesugarstone.github.io/Game-Project-Black-4/ '),
@@ -178,7 +178,7 @@ INSERT INTO Game (Game_name, Game_genre, Game_Preview, Game_Description, Game_Li
 ('Holawrad', 2, NULL, 'A fun roguelike adventure game where the player can fight waves of enemies and become powerful enough to beat a strong final foe, ????. Players will die, but they’ll learn new builds and different moves of new foes with each death! The game has 4 levels with unique bosses at the end of them. There’s also a shop where players can upgrade themselves. Through upgrades, players are also given unique combos that they can do with their util/abilities!', 'https://lwazi71.github.io/491-SurvivorGame/');
 
 -- Feedback Data
-INSERT INTO Feedback (Game_id, Comment, Rating) VALUES
+INSERT INTO Feedback (Game_ID, Comment, Rating) VALUES
 (0, 'Surprisingly strategic and endlessly charming—nothing beats watching grandmas brawl their way to happiness.', '5'),
 (1, 'Solid story and decent combat, but the pacing drags and some mechanics feel underdeveloped.', '3'),
 (2, 'Cool concept and setting, but the gameplay gets repetitive fast and lacks meaningful progression.', '2'),
@@ -196,7 +196,7 @@ INSERT INTO Feedback (Game_id, Comment, Rating) VALUES
 
 
 -- Developers Data
-INSERT INTO Developers (Dev_name, Game_id) VALUES 
+INSERT INTO Developers (`Name`, Game_ID) VALUES 
 ('Luke Chung, Abraham Engebretson, Kylie Hammett, Kaely Willhite', 1),
 ('Charankamal Brar, Jose Rodriguez, Shu-Ren Shen', 2),
 ('Zachary Anderson, Reis Cook, Maple Gunn, Terence Trajano', 3),
@@ -220,32 +220,71 @@ INSERT INTO Developers (Dev_name, Game_id) VALUES
 ('Lwazi Mabota, Murad Tair, Alan To, Holden Tsang', 21);
 
 -- 10 Meaningful SQL Queries --
--- 1: Join at least three tables using JOIN ON
+/* 
+Query 1: Join at least three tables using JOIN ON
+Purpose: 
+Expected Output: 
+*/
 
 
--- 2: Use nested queries with IN, ANY, or ALL and include a GROUP BY clause
+/* 
+Query 2: Use nested queries with IN, ANY, or ALL and include a GROUP BY clause
+Purpose: 
+Expected Output: 
+*/
 
 
--- 3: A correlated subquery with appropriate aliasing
+/* 
+Query 3: A correlated subquery with appropriate aliasing
+Purpose: 
+Expected Output: 
+*/
 
 
--- 4: Use a FULL OUTER JOIN
+/* 
+Query 4: Use a FULL OUTER JOIN
+Purpose: 
+Expected Output: 
+*/
 
 
--- 5: Use a set operation: UNION, EXCEPT, or INTERSECT (verify DBMS support)
+/* 
+Query 5: Use a set operation: UNION, EXCEPT, or INTERSECT (verify DBMS support)
+Purpose: 
+Expected Output: 
+*/
 
 
--- 6: Your own non-trivial queries using at least two tables
+/* 
+Query 6: Your own non-trivial queries using at least two tables
+Purpose: 
+Expected Output: 
+*/
 
 
--- 7: Your own non-trivial queries using at least two tables
+/* 
+Query 7: Your own non-trivial queries using at least two tables
+Purpose: 
+Expected Output: 
+*/
 
 
--- 8: Your own non-trivial queries using at least two tables
+/* 
+Query 8: Your own non-trivial queries using at least two tables
+Purpose: 
+Expected Output: 
+*/
 
 
--- 9: A non-trivial query using at least three tables
+/* 
+Query 9: A non-trivial query using at least three tables
+Purpose: 
+Expected Output: 
+*/
 
 
--- 10: A non-trivial query using at least three tables with aliasing/renaming
-
+/* 
+Query 10: A non-trivial query using at least three tables with aliasing/renaming
+Purpose: 
+Expected Output: 
+*/
