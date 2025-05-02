@@ -32,7 +32,7 @@ CREATE TABLE Game (
     Link TINYTEXT,
     CONSTRAINT valid_game_name CHECK (TRIM(`Name`) != ''), -- Checks if the game's name does not have only whitespaces
     CONSTRAINT valid_link CHECK (Link LIKE 'https://%.github.io%'), -- Checks if the link is a GitHub link
-    CONSTRAINT game_ibfk_1 FOREIGN KEY (Genre) REFERENCES Genre(ID)
+    CONSTRAINT game_ibfk_1 FOREIGN KEY (Genre) REFERENCES Genre(ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Feedback table
@@ -43,15 +43,15 @@ CREATE TABLE Feedback (
     Rating INT,
     PRIMARY KEY (User_ID, Game_ID),
     CONSTRAINT valid_rating CHECK (Rating >= 1 AND Rating <= 5), -- Checks if the rating is between 1 and 5
-    CONSTRAINT feedback_ibfk_1 FOREIGN KEY (Game_ID) REFERENCES Game(ID),
-    CONSTRAINT feedback_ibfk_2 FOREIGN KEY (User_ID) REFERENCES Users(ID)
+    CONSTRAINT feedback_ibfk_1 FOREIGN KEY (Game_ID) REFERENCES Game(ID) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT feedback_ibfk_2 FOREIGN KEY (User_ID) REFERENCES Users(ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Developers table
 CREATE TABLE Developers (
     `Name` VARCHAR(100) PRIMARY KEY,
     Game_ID INT,
-    CONSTRAINT developers_ibfk_1 FOREIGN KEY (Game_ID) REFERENCES Game(ID)
+    CONSTRAINT developers_ibfk_1 FOREIGN KEY (Game_ID) REFERENCES Game(ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- User Data
