@@ -54,8 +54,8 @@ CREATE TABLE Developers (
     CONSTRAINT developers_ibfk_1 FOREIGN KEY (Game_ID) REFERENCES Game(ID)
 );
 
--- Users Data
-INSERT INTO Users (`Name`, `Password`) VALUES 
+-- User Data
+INSERT INTO User (`Name`, `Password`) VALUES 
 ('Abraham', 'password123'),
 ('Luke', 'password123'),
 ('Kylie', 'password123'),
@@ -281,16 +281,46 @@ WHERE Feedback.Rating = (
 
 /* 
 Query 4: Use a FULL OUTER JOIN
-Purpose: 
-Expected Output: 
+Purpose: Collect all of the activity of all users 
+Expected Output: A table with all users, developers, and feedback tuples
 */
-
+SELECT User.ID, User.Name, Developers.NAME FROM User
+FULL OUTER JOIN Developers ON CHARINDEX(User.Name, Developers.NAME) > 0
+FULL OUTER JOIN Feedback ON User.ID = Feedback.User_ID;
 
 /* 
 Query 5: Use a set operation: UNION, EXCEPT, or INTERSECT (verify DBMS support)
-Purpose: 
-Expected Output: 
+Purpose: Find the highest and lowest ratings for each game
+Expected Output: rating type, game name, rating, and user name
 */
+SELECT
+    'Best Review' AS 'Rating Type',
+    Game.Name AS 'Game Name', 
+    Feedback.Rating AS 'Rating',
+    User.Name AS 'User Name'
+FROM Feedback
+JOIN Game ON Game.ID = Feedback.Game_ID
+JOIN User ON User.ID = Feedback.User_ID
+WHERE Feedback.Rating = (
+    SELECT MAX(CAST(Feedback2.Rating AS DECIMAL))
+    FROM Feedback AS Feedback2
+    WHERE Feedback2.Game_ID = Feedback.Game_ID
+);
+UNION
+SELECT
+    'Worst Review' AS 'Rating Type',
+    Game.Name AS 'Game Name',
+    Feedback.Rating AS 'Rating',
+    User.Name AS 'User Name'
+FROM Feedback
+JOIN Game ON Game.ID = Feedback.Game_ID
+JOIN User ON User.ID = Feedback.User_ID
+WHERE Feedback.Rating = (
+    SELECT MIN(CAST(Feedback2.Rating AS DECIMAL))
+    FROM Feedback AS Feedback2
+    WHERE Feedback2.Game_ID = Feedback.Game_ID
+)
+ORDER BY 'Game Name', 'Rating Type';
 
 
 /* 
