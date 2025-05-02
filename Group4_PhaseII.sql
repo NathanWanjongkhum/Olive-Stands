@@ -2,6 +2,12 @@
 --
 -- --------------------------------------------------------
 
+CREATE TYPE Genre_Name AS ENUM(
+    'Action','Adventure','RPG','Strategy','Simulation','Sports','Puzzle','Shooter','Platformer',
+    'Racing','Fighting','Survival','Horror','Tower Defense','Auto-Battler','Card','Board',
+    'Metroidvania','Souls-Like','Other'
+); 
+
 -- User table
 CREATE TABLE User (
     ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -13,9 +19,7 @@ CREATE TABLE User (
 -- Genre table
 CREATE TABLE Genre (
     ID INT AUTO_INCREMENT PRIMARY KEY,
-    Genre ENUM('Action','Adventure','RPG','Strategy','Simulation','Sports','Puzzle','Shooter','Platformer',
-                'Racing','Fighting','Survival','Horror','Tower Defense','Auto-Battler','Card','Board',
-                'Metroidvania', 'Souls-Like','Other') NOT NULL DEFAULT 'Other'
+    Genre Genre_Name NOT NULL DEFAULT 'Other'
 );
 
 -- Game table
@@ -183,20 +187,20 @@ INSERT INTO Game (`Name`, Genre, Preview, `Description`, Link) VALUES
 
 -- Feedback Data
 INSERT INTO Feedback (Game_ID, Comment, Rating) VALUES
-(0, 'Surprisingly strategic and endlessly charming—nothing beats watching grandmas brawl their way to happiness.', '5'),
-(1, 'Solid story and decent combat, but the pacing drags and some mechanics feel underdeveloped.', '3'),
-(2, 'Cool concept and setting, but the gameplay gets repetitive fast and lacks meaningful progression.', '2'),
-(3, 'Flap Away revitalizes the endless flyer genre with creative mechanics, vibrant level design, and surprisingly tense boss fights. It''s a challenging yet rewarding experience that keeps you coming back for just one more run.', '4'),
-(4, 'The concept has potential, but the chaotic pacing and clunky controls make it more frustrating than fun. Even with upgrades and boss fights, it struggles to stay engaging for long.', '2'),
-(4, 'A promising idea buried under poor execution—awkward controls and uneven pacing make it hard to enjoy. Even the flashy features can''t save it from feeling like a chore.', '1'),
-(4, 'Unpolished and frustrating, this game squanders its potential with messy gameplay and a lack of cohesion. It’s more exhausting than entertaining.', '1'),
-(5, 'A decent adventure with varied characters and enemies, but the gameplay feels repetitive after a while. The lack of depth in upgrades and progression makes it hard to stay invested.', '3'),
-(6, 'A quirky and fun blend of pizza-making and monster fighting! The creative concept and engaging gameplay make it a surprisingly addictive experience.', '5'),
-(7, 'A deeply emotional and action-packed journey, where the quest for revenge is as thrilling as it is heartbreaking. The combat and story come together to create an unforgettable experience.', '5'),
-(8, 'A heartfelt story of rediscovery, though it feels a bit slow at times. The sushi-making concept adds a unique twist, but the pacing struggles to keep the momentum going.', '3'),
-(8, 'A refreshing take on overcoming burnout, blending a heartfelt narrative with the therapeutic art of sushi-making. While the pacing is solid, it could dive deeper into character development for an even more impactful experience.', '4'),
-(9, 'Echoes of Divinity captures the intense challenge and atmosphere of Soulsborne games, with satisfying combat and tough bosses. While it excels in difficulty and design, a bit more innovation could elevate it further.', '4'),
-(10, 'A cool concept with reality-shifting mechanics, but the puzzles feel too simple and repetitive. It lacks the depth needed to keep you engaged for long.', '2');
+(5, 1, 'Surprisingly strategic and endlessly charming—nothing beats watching grandmas brawl their way to happiness.', 5),
+(5, 13, 'Solid story and decent combat, but the pacing drags and some mechanics feel underdeveloped.', 3),
+(3, 2, 'Cool concept and setting, but the gameplay gets repetitive fast and lacks meaningful progression.', 2),
+(2, 3, 'Flap Away revitalizes the endless flyer genre with creative mechanics, vibrant level design, and surprisingly tense boss fights. It''s a challenging yet rewarding experience that keeps you coming back for just one more run.', 4),
+(1, 4, 'The concept has potential, but the chaotic pacing and clunky controls make it more frustrating than fun. Even with upgrades and boss fights, it struggles to stay engaging for long.', 2),
+(10, 4, 'A promising idea buried under poor execution—awkward controls and uneven pacing make it hard to enjoy. Even the flashy features can''t save it from feeling like a chore.', 1),
+(11, 4, 'Unpolished and frustrating, this game squanders its potential with messy gameplay and a lack of cohesion. It’s more exhausting than entertaining.', 1),
+(12, 5, 'A decent adventure with varied characters and enemies, but the gameplay feels repetitive after a while. The lack of depth in upgrades and progression makes it hard to stay invested.', 3),
+(15, 6, 'A quirky and fun blend of pizza-making and monster fighting! The creative concept and engaging gameplay make it a surprisingly addictive experience.', 5),
+(17, 7, 'A deeply emotional and action-packed journey, where the quest for revenge is as thrilling as it is heartbreaking. The combat and story come together to create an unforgettable experience.', 5),
+(8, 8, 'A heartfelt story of rediscovery, though it feels a bit slow at times. The sushi-making concept adds a unique twist, but the pacing struggles to keep the momentum going.', 3),
+(2, 8, 'A refreshing take on overcoming burnout, blending a heartfelt narrative with the therapeutic art of sushi-making. While the pacing is solid, it could dive deeper into character development for an even more impactful experience.', 4),
+(3, 9, 'Echoes of Divinity captures the intense challenge and atmosphere of Soulsborne games, with satisfying combat and tough bosses. While it excels in difficulty and design, a bit more innovation could elevate it further.', 4),
+(4, 10, 'A cool concept with reality-shifting mechanics, but the puzzles feel too simple and repetitive. It lacks the depth needed to keep you engaged for long.', 2);
 
 
 -- Developers Data
@@ -291,9 +295,15 @@ Expected Output:
 
 /* 
 Query 6: Your own non-trivial queries using at least two tables
-Purpose: 
-Expected Output: 
+Purpose: groups and sorts game ids by the number of ratings it has (descending)
+Expected Output: A list of number of game ratings with their corresponding game id
 */
+SELECT
+    game_id,
+    COUNT(rating) AS "Rating Quantity"
+FROM feedback
+GROUP BY game_id
+ORDER BY "Rating Quantity" DESC;
 
 
 /* 
