@@ -325,29 +325,48 @@ ORDER BY 'Game Name', 'Rating Type';
 
 /* 
 Query 6: Your own non-trivial queries using at least two tables
-Purpose: groups and sorts game ids by the number of ratings it has (descending)
-Expected Output: A list of number of game ratings with their corresponding game id
+Purpose: sorts games by the number of ratings it has (descending)
+Expected Output: A list of number of game ratings with their corresponding name
 */
 SELECT
-    game_id,
-    COUNT(rating) AS "Rating Quantity"
+    "Name",
+    COUNT("Rating") AS "Rating_Count"
 FROM feedback
-GROUP BY game_id
-ORDER BY "Rating Quantity" DESC;
+    RIGHT JOIN game ON feedback."Game_ID"=game."ID"
+GROUP BY "Game_ID", "ID", "Name"   
+ORDER BY "Rating_Count" DESC;
 
 
 /* 
 Query 7: Your own non-trivial queries using at least two tables
-Purpose: 
-Expected Output: 
+Purpose: Gets the highest rated action games
+Expected Output: A list of all action games sorted based on their average rating
 */
+SELECT
+    "Name",
+    AVG("Rating") AS "Rating"
+FROM feedback
+    RIGHT JOIN game ON feedback."Game_ID"=game."ID"
+    JOIN genre ON game."Genre"=genre."ID"
+GROUP BY "Game_ID", game."ID", genre."ID", "Name", "genre"
+HAVING genre."Genre"='Action'
+ORDER BY "Rating" DESC NULLS LAST;
 
 
 /* 
 Query 8: Your own non-trivial queries using at least two tables
-Purpose: 
-Expected Output: 
+Purpose: Gets all games with a genre that is not Other with feedback
+Expected Output: A list of all games that have feedback and have a genre that is not other sorted based on average rating
 */
+SELECT
+    "Name",
+    AVG("Rating") AS "AVG_Rating"
+FROM feedback
+    JOIN game ON feedback."Game_ID"=game."ID"
+    JOIN genre ON game."Genre"=genre."ID"
+GROUP BY "Game_ID", game."ID", genre."ID", "Name", "genre"
+HAVING genre."Genre"!='Other'
+ORDER BY "AVG_Rating" DESC;
 
 
 /* 
