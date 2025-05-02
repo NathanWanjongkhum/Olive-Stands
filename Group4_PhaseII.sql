@@ -15,7 +15,7 @@ CREATE TABLE Genre (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Genre ENUM('Action','Adventure','RPG','Strategy','Simulation','Sports','Puzzle','Shooter','Platformer',
                 'Racing','Fighting','Survival','Horror','Tower Defense','Auto-Battler','Card','Board',
-                'Metroidvania', 'Souls-Like','Other') NOT NULL
+                'Metroidvania', 'Souls-Like','Other') NOT NULL DEFAULT 'Other'
 );
 
 -- Game table
@@ -24,7 +24,7 @@ CREATE TABLE Game (
     `Name` TINYTEXT NOT NULL,
     Genre INT,
     Preview BLOB DEFAULT NULL,  -- IMAGE type replaced with BLOB
-    `Description` VARCHAR(1000),
+    `Description` VARCHAR(1000) DEFAULT "No description provided",
     Link TINYTEXT,
     CONSTRAINT valid_game_name CHECK (TRIM(`Name`) != ''), -- Checks if the game's name does not have only whitespaces
     CONSTRAINT valid_link CHECK (Link LIKE 'https://%.github.io%'), -- Checks if the link is a GitHub link
