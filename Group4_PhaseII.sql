@@ -2,7 +2,7 @@
     Project Phase II
     Group 4 (PostgreSQL)
     This SQL Script was tested on PostgreSQL.  
-    To run, simply load this script file and run.
+    To run, simply load this script file (or Group4_Postgre.sql) and run.
     ********************************
 */
 
