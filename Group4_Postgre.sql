@@ -286,43 +286,43 @@ Query 4: Use a FULL OUTER JOIN
 Purpose: Collect all of the activity of all users 
 Expected Output: A table with all users, developers, and feedback tuples
 */
--- SELECT Users."ID", Users."Name", Developers."Name" FROM Users
--- FULL OUTER JOIN Developers ON POSITION(Users."Name" IN Developers."Name") > 0
--- FULL OUTER JOIN Feedback ON Users."ID" = Feedback."User_ID";
+SELECT u."ID", u."Name", d."Name"
+FROM Users u
+FULL OUTER JOIN Developers d ON TRUE
+FULL OUTER JOIN Feedback f ON u."ID" = f."User_ID"
+WHERE POSITION(u."Name" IN d."Name") > 0 OR u."Name" IS NULL OR d."Name" IS NULL;
 
 /* 
 Query 5: Use a set operation: UNION, EXCEPT, or INTERSECT (verify DBMS support)
 Purpose: Find the highest and lowest ratings for each game
 Expected Output: rating type, game name, rating, and user name
 */
--- SELECT
---     "Best Review" AS "Rating Type",
---     Game."Name" AS "Game Name", 
---     Feedback."Rating" AS "Rating",
---     Users."Name" AS "User Name"
--- FROM Feedback
---     JOIN Game ON Game."ID" = Feedback."Game_ID"
---     JOIN Users ON Users."ID" = Feedback."User_ID"
--- WHERE Feedback."Rating" = (
---     SELECT MAX(CAST(Feedback2."Rating" AS DECIMAL))
---     FROM Feedback AS "Feedback2"
---     WHERE Feedback2."Game_ID" = Feedback."Game_ID"
--- )
--- UNION
--- SELECT
---     "Worst Review" AS "Rating Type",
---     Game."Name" AS "Game Name",
---     Feedback."Rating" AS "Rating",
---     Users."Name" AS "User Name"
--- FROM Feedback
---     JOIN Game ON Game."ID" = Feedback."Game_ID"
---     JOIN Users ON Users."ID" = Feedback."User_ID"
--- WHERE Feedback."Rating" = (
---     SELECT MIN(CAST(Feedback2."Rating" AS DECIMAL))
---     FROM Feedback AS "Feedback2"
---     WHERE Feedback2."Game_ID" = Feedback."Game_ID"
--- )
--- ORDER BY "Game Name", "Rating Type";
+SELECT
+    Game."Name" AS "Game Name", 
+    Feedback."Rating" AS "Rating",
+    Users."Name" AS "User Name"
+FROM Feedback
+    JOIN Game ON Game."ID" = Feedback."Game_ID"
+    JOIN Users ON Users."ID" = Feedback."User_ID"
+WHERE Feedback."Rating" = (
+    SELECT MAX(CAST("Feedback2"."Rating" AS DECIMAL))
+    FROM Feedback AS "Feedback2"
+    WHERE "Feedback2"."Game_ID" = Feedback."Game_ID"
+)
+UNION
+SELECT
+    Game."Name" AS "Game Name",
+    Feedback."Rating" AS "Rating",
+    Users."Name" AS "User Name"
+FROM Feedback
+    JOIN Game ON Game."ID" = Feedback."Game_ID"
+    JOIN Users ON Users."ID" = Feedback."User_ID"
+WHERE Feedback."Rating" = (
+    SELECT MIN(CAST("Feedback2"."Rating" AS DECIMAL))
+    FROM Feedback AS "Feedback2"
+    WHERE "Feedback2"."Game_ID" = Feedback."Game_ID"
+)
+ORDER BY "Game Name", "Rating";
 
 /* 
 Query 6: Your own non-trivial queries using at least two tables
