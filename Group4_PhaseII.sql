@@ -1,7 +1,18 @@
+/*  ********************************
+    Project Phase II
+    Group 4 (PostgreSQL)
+    This SQL Script was tested on PostgreSQL.  
+    To run, simply load this script file and run.
+    ********************************
+*/
+
 -- Database: `group4_phase2`
 --
 -- --------------------------------------------------------
 
+-- ***************************
+-- Part A
+-- ***************************
 CREATE TYPE Genre_Name AS ENUM(
     'Action','Adventure','RPG','Strategy','Simulation','Sports','Puzzle','Shooter','Platformer',
     'Racing','Fighting','Survival','Horror','Tower Defense','Auto-Battler','Card','Board',
@@ -54,7 +65,13 @@ CREATE TABLE Developers (
     CONSTRAINT developers_ibfk_1 FOREIGN KEY (Game_ID) REFERENCES Game(ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- User Data
+-- ***************************
+-- ***************************
+-- Part B
+-- ***************************
+
+-- Sample Data for User Table
+-- Summary: Store user information
 INSERT INTO User (`Name`, `Password`) VALUES 
 ('Abraham', 'password123'),
 ('Luke', 'password123'),
@@ -137,7 +154,8 @@ INSERT INTO User (`Name`, `Password`) VALUES
 ('Holden Tsang', 'password123'),
 ('Murad Tair', 'password123');
 
--- Genre Data
+-- Sample Data for Genre Table
+-- Summary: Store genre information
 INSERT INTO Genre (Genre) VALUES 
 ('Action'),
 ('Adventure'),
@@ -161,7 +179,8 @@ INSERT INTO Genre (Genre) VALUES
 ('Other');
 
 
--- Game Data
+-- Sample Data for Game Table
+-- Summary: Store game information
 INSERT INTO Game (`Name`, Genre, Preview, `Description`, Link) VALUES 
 ('Grandmas vs. Unhappiness', 15, NULL, 'Grandmas make it their mission to make all the unhappy people in their town happy in auto-battler/auto-chess style combat.', 'https://westerntoad.github.io/tcss491-project/'),
 ('Stickman - The Savior', 1, NULL, 'David, despite financial problems, lived a simple and happy life with his daughter Mia. One night, while David was away, the Shadow King’s minions destroyed their home. They kidnapped Mia, leaving only a note: ''You will find her in the Obsidian Tower. David must fight to save his daughter!', ' https://joser27.github.io/TCSS491-GameProject/'),
@@ -185,7 +204,8 @@ INSERT INTO Game (`Name`, Genre, Preview, `Description`, Link) VALUES
 ('Project P.A.K.S', 9, NULL, 'A 2D level-based precision platformer inspired by N++ and Super Meat Boy, with 7 levels. Get to the elevator, get to the top.', 'https://wahgew.github.io/Project-PAKS-TCSS-491/'),
 ('Holawrad', 2, NULL, 'A fun roguelike adventure game where the player can fight waves of enemies and become powerful enough to beat a strong final foe, ????. Players will die, but they’ll learn new builds and different moves of new foes with each death! The game has 4 levels with unique bosses at the end of them. There’s also a shop where players can upgrade themselves. Through upgrades, players are also given unique combos that they can do with their util/abilities!', 'https://lwazi71.github.io/491-SurvivorGame/');
 
--- Feedback Data
+-- Sample Data for Feedback Table
+-- Summary: Store feedback information
 INSERT INTO Feedback (Game_ID, Comment, Rating) VALUES
 (5, 1, 'Surprisingly strategic and endlessly charming—nothing beats watching grandmas brawl their way to happiness.', 5),
 (5, 13, 'Solid story and decent combat, but the pacing drags and some mechanics feel underdeveloped.', 3),
@@ -203,7 +223,8 @@ INSERT INTO Feedback (Game_ID, Comment, Rating) VALUES
 (4, 10, 'A cool concept with reality-shifting mechanics, but the puzzles feel too simple and repetitive. It lacks the depth needed to keep you engaged for long.', 2);
 
 
--- Developers Data
+-- Sample Data for Developers Table
+-- Summary: Store developer information
 INSERT INTO Developers (`Name`, Game_ID) VALUES 
 ('Luke Chung, Abraham Engebretson, Kylie Hammett, Kaely Willhite', 1),
 ('Charankamal Brar, Jose Rodriguez, Shu-Ren Shen', 2),
@@ -227,7 +248,10 @@ INSERT INTO Developers (`Name`, Game_ID) VALUES
 ('Ken Egawa, Andrew Hwang, Peter Madin, Sopheanith Ny', 20),
 ('Lwazi Mabota, Murad Tair, Alan To, Holden Tsang', 21);
 
--- 10 Meaningful SQL Queries --
+-- ***************************
+-- ***************************
+-- Part C
+-- ***************************
 /* 
 Query 1: Join at least three tables using JOIN ON
 Purpose: Display all games with their genre, average rating, and description.
@@ -389,3 +413,5 @@ SELECT U.`Name` AS Usernames FROM Users AS U
 JOIN Feedback AS F ON F.User_ID = U.ID
 JOIN Game AS G ON G.ID = F.Game_ID
 WHERE F.Rating = 5 AND G.`Name` = 'Duality';
+
+-- End of Script (May 6th, 2025)
