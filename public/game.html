@@ -19,7 +19,9 @@
       Game Page
     </h1>
     <div class="text-center">
-      <button id="game-link" class="btn btn-primary mb-3">Go to Github</button>
+      <a id="game-link" href="#" target="_blank">
+        <button class="btn btn-primary mb-3 bg-success">Go to Github</button>
+      </a>
     </div>
     <p id="game-description" class="lead mb-3 d-flex justify-content-center">
       No description available.
@@ -44,15 +46,81 @@
         // Get URL parameters
         const urlParams = new URLSearchParams(window.location.search);
 
-        // Fetch game list for section
+        // Fetch game details for page
         const response = await fetch(`/game?ID=${urlParams.get("ID")}`);
         const games = await response.json();
 
-        console.log("Games:", games[0]);
         if (games.length === 0) {
-          document.getElementById("game-title").textContent = "No games found";
+          document.getElementById("game-title").textContent = "No game found";
           return;
         }
+
+        const { Game_Name, Game_Description, Game_Link } = games[0];
+
+        // Set game title
+        document.getElementById("game-title").textContent = Game_Name;
+
+        // Set game description
+        document.getElementById("game-description").textContent =
+          Game_Description;
+
+        // Set game link
+        if (Game_Link === null || Game_Link === "") {
+          document.getElementById("game-link").classList.add("disabled");
+        } else {
+          document.getElementById("game-link").href = Game_Link;
+        }
+
+        // Create comments section
+        (async () => {
+          const commentsSection = document.getElementById("comments");
+          commentsSection.innerHTML = "";
+
+          // Fetch game feedback for section
+          const response = await fetch(
+            `/game/feedback?ID=${urlParams.get("ID")}`
+          );
+          const feedback = await response.json();
+          console.log("Feedback:", feedback);
+
+          if (!Array.isArray(feedback) || feedback.length === 0) {
+            const noComments = document.createElement("p");
+            noComments.textContent = "No comments available.";
+            commentsSection.appendChild(noComments);
+            return;
+          }
+
+          feedback.forEach((comment) => {
+            const { User_Name, Feedback_Rating, Feedback_Comment } = comment;
+
+            // Create a card for each comment
+            const card = document.createElement("div");
+            card.className = "card mb-3";
+
+            // Create a header for the card
+            const cardTitle = document.createElement("h4");
+            cardTitle.className = "card-title";
+            cardTitle.textContent = User_Name;
+
+            // Create a sub-header for the card
+            const ratingTitle = document.createElement("h5");
+            ratingTitle.className = "card-subtitle mb-2 text-muted";
+            ratingTitle.textContent = `Rating: ${Feedback_Rating}/5`;
+
+            // Create a paragraph for the card
+            const cardText = document.createElement("p");
+            cardText.className = "card-text";
+            cardText.textContent = Feedback_Comment;
+
+            // Append elements to the card body
+            card.appendChild(cardTitle);
+            card.appendChild(ratingTitle);
+            card.appendChild(cardText);
+
+            // Append the card to the comments section
+            commentsSection.appendChild(card);
+          });
+        })();
       } catch (error) {
         console.error("Error fetching games:", error);
         return;

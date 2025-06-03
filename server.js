@@ -16,6 +16,7 @@ app.use(express.static("assets"));
 
 app.get("/index", indexController.getAllGames);
 app.get("/game", gameController.getGame);
+app.get("/game/feedback", gameController.getGameFeedback);
 
 // Start the server and log a message indicating the URL.
 app.listen(PORT, () => {
