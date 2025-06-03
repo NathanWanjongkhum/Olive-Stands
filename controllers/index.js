@@ -8,7 +8,7 @@ const getAllGames = (req, res) => {
       console.error("Error fetching games:", err);
       res.status(500).json({ error: "Error fetching games list" });
     } else {
-      res.json(results.rows); // PostgreSQL returns results.rows, not just results
+      res.json(results.rows);
     }
   });
 };

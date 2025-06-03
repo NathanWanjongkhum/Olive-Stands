@@ -47,7 +47,7 @@
         </div>
       </div>
     </nav>
-    <div id="gameSection" class="container mt-6">
+    <div id="gameSection" class="container mt-6" style="margin-top: 1em">
       <!-- The game section will be populated with cards for each game -->
     </div>
     <footer class="bg-light mt-5 py-3">
@@ -67,7 +67,7 @@
           const games = await response.json();
 
           games.forEach((game) => {
-            const { Name, Description, Genre, Preview } = game;
+            const { ID, Name, Description, Genre, Preview } = game;
 
             if (!previousRow || previousRow.children.length >= 4) {
               // If the previous row is full or doesn't exist, create a new row
@@ -83,7 +83,7 @@
             card.id = `game-${Name}`;
             card.addEventListener("click", () => {
               // Redirect to the game details page when the card is clicked
-              window.location.href = `gameDetails.html?name=${Name}`;
+              window.location.href = `game.html?ID=${ID}`;
             });
 
             // Create an image element for the card
@@ -123,44 +123,6 @@
         } catch (error) {
           console.error("Error fetching games:", error);
         }
-
-        // Automatically fetch and display employee details when a name is selected
-        // dropdown.addEventListener("change", async (event) => {
-        //   const SSN = event.target.value;
-        //   if (!SSN) {
-        //     resultSection.style.display = "none"; // Hide results if no name is selected
-        //     return;
-        //   }
-        //   try {
-        //     // Send a request to the backend to fetch employee details
-        //     const response = await fetch(`/employee/details?SSN=${SSN}`);
-        //     const data = await response.json();
-        //     resultTableBody.innerHTML = ""; // Clear previous results
-        //     resultSection.style.display = "block";
-        //     if (data.length > 0) {
-        //       const {
-        //         EmployeeName,
-        //         ManagerName,
-        //         DepartmentName,
-        //         Salary,
-        //         BirthDate,
-        //       } = data[0];
-        //       resultTableBody.innerHTML = `
-        //           <tr>
-        //             <td>${EmployeeName}</td>
-        //             <td>${ManagerName || "N/A"}</td>
-        //             <td>${DepartmentName}</td>
-        //             <td>${Salary}</td>
-        //             <td>${new Date(BirthDate).toLocaleDateString()}</td>
-        //           </tr>
-        //           `;
-        //     } else {
-        //       resultTableBody.innerHTML = `<tr><td colspan="5">No data found.</td></tr>`;
-        //     }
-        //   } catch (error) {
-        //     console.error("Error fetching employee details:", error);
-        //   }
-        // });
       });
     </script>
   </body>
