@@ -17,6 +17,12 @@ app.use(express.static("assets"));
 app.get("/index", indexController.getAllGames);
 app.get("/game", gameController.getGame);
 app.get("/game/feedback", gameController.getGameFeedback);
+app.get("/query1", require("./controllers/query1").getAllGames);
+app.get("/query2", require("./controllers/query2").getAllGames);
+app.get("/query3", require("./controllers/query3").getAllGames);
+app.get("/query4", require("./controllers/query4").getAllGames);
+app.get("/query5", require("./controllers/query5").getAllGames);
+app.get("/query6", require("./controllers/query6").getAllGames);
 
 // Start the server and log a message indicating the URL.
 app.listen(PORT, () => {
