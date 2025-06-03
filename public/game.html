@@ -10,7 +10,26 @@
     />
   </head>
   <body>
-    Game Page Content Here
+    <h1
+      id="game-title"
+      type="button"
+      class="display-5 mb-3 fw-bold d-flex justify-content-center"
+      style="margin-top: 0.5em"
+    >
+      Game Page
+    </h1>
+    <div class="text-center">
+      <button id="game-link" class="btn btn-primary mb-3">Go to Github</button>
+    </div>
+    <p id="game-description" class="lead mb-3 d-flex justify-content-center">
+      No description available.
+    </p>
+    <div class="container">
+      <h2>Comments</h2>
+      <div id="comments" class="container">
+        <!-- Comments will be added here -->
+      </div>
+    </div>
   </body>
   <footer class="bg-light mt-5 py-3">
     <div class="container text-center">
@@ -22,11 +41,18 @@
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
       try {
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+
         // Fetch game list for section
-        const response = await fetch("/game?ID=1");
+        const response = await fetch(`/game?ID=${urlParams.get("ID")}`);
         const games = await response.json();
 
         console.log("Games:", games[0]);
+        if (games.length === 0) {
+          document.getElementById("game-title").textContent = "No games found";
+          return;
+        }
       } catch (error) {
         console.error("Error fetching games:", error);
         return;
