@@ -33,23 +33,7 @@
       </div>
     </nav>
     <div id="gameSection" class="container mt-5">
-      <div class="row row-cols-4">
-        <div class="col card">
-          <img
-            src="images/No_Image_Available.jpg"
-            class="card-img-top"
-            alt="No Image Available"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card’s content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
+      <!-- The game section will be populated with cards for each game -->
     </div>
     <footer class="bg-light mt-5 py-3">
       <div class="container text-center">
@@ -67,44 +51,58 @@
           const response = await fetch("/index");
           const games = await response.json();
 
-          console.log("Games fetched:", games);
-          // games.forEach((game) => {
-          //   if (!previousRow || previousRow.children.length >= 4) {
-          //     // If the previous row is full or doesn't exist, create a new row
-          //     const newRow = document.createElement("div");
-          //     newRow.className = "row row-cols-4";
-          //     gameSection.appendChild(newRow);
-          //     previousRow = newRow;
-          //   }
-          //   // Create a card for each game
-          //   const card = document.createElement("div");
-          //   card.className = "col col-card";
-          //   // Create an image element for the card
-          //   const img = document.createElement("img");
-          //   img.src = game.image || "images/No_Image_Available.jpg";
-          //   img.className = "card-img-top";
-          //   img.alt = "No Image Available";
-          //   // Create a card body element for the card
-          //   const cardBody = document.createElement("div");
-          //   cardBody.className = "card-body";
-          //   // Create a header for the card
-          //   const cardTitle = document.createElement("h5");
-          //   cardTitle.className = "card-title";
-          //   cardTitle.textContent = game.name;
-          //   // Create a paragraph for the card
-          //   const cardText = document.createElement("p");
-          //   cardText.className = "card-text";
-          //   cardText.textContent = game.description;
-          //   // Append elements to the card body
-          //   cardBody.appendChild(cardTitle);
-          //   cardBody.appendChild(cardText);
-          //   cardBody.appendChild(cardButton);
-          //   // Append the image and card body to the card
-          //   card.appendChild(img);
-          //   card.appendChild(cardBody);
-          //   // Append the card to the previous row
-          //   previousRow.appendChild(card);
-          // });
+          games.forEach((game) => {
+            console.log(game);
+
+            const { Name, Description, Genre, Preview } = game;
+
+            if (!previousRow || previousRow.children.length >= 4) {
+              // If the previous row is full or doesn't exist, create a new row
+              const newRow = document.createElement("div");
+              newRow.className = "row row-cols-4";
+              gameSection.appendChild(newRow);
+              previousRow = newRow;
+            }
+
+            // Create a card for each game
+            const card = document.createElement("div");
+            card.className = "col col-card";
+            card.id = `game-${Name}`;
+
+            // Create an image element for the card
+            const img = document.createElement("img");
+            img.src = Preview || "images/No_Image_Available.jpg";
+            img.className = "card-img-top";
+            img.alt = "No Image Available";
+
+            // Create a card body element for the card
+            const cardBody = document.createElement("div");
+            cardBody.className = "card-body";
+
+            // Create a header for the card
+            const cardTitle = document.createElement("h5");
+            cardTitle.className = "card-title";
+            cardTitle.textContent = Name || "No Name Available";
+
+            // Create a paragraph for the card
+            const cardText = document.createElement("p");
+            cardText.className = "card-text";
+            cardText.textContent =
+              Description.length > 100
+                ? Description.substring(0, 100) + "..."
+                : Description;
+
+            // Append elements to the card body
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardText);
+
+            // Append the image and card body to the card
+            card.appendChild(img);
+            card.appendChild(cardBody);
+
+            // Append the card to the previous row
+            previousRow.appendChild(card);
+          });
         } catch (error) {
           console.error("Error fetching games:", error);
         }
