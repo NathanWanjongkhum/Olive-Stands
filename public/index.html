@@ -8,6 +8,21 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/litera/bootstrap.min.css"
     />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .col-card {
+        cursor: pointer;
+      }
+      .col-card:hover {
+        transform: scale(1.05);
+        transition: transform 0.2s;
+        box-shadow:
+          0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
@@ -32,7 +47,7 @@
         </div>
       </div>
     </nav>
-    <div id="gameSection" class="container mt-5">
+    <div id="gameSection" class="container mt-6">
       <!-- The game section will be populated with cards for each game -->
     </div>
     <footer class="bg-light mt-5 py-3">
@@ -52,8 +67,6 @@
           const games = await response.json();
 
           games.forEach((game) => {
-            console.log(game);
-
             const { Name, Description, Genre, Preview } = game;
 
             if (!previousRow || previousRow.children.length >= 4) {
@@ -66,8 +79,12 @@
 
             // Create a card for each game
             const card = document.createElement("div");
-            card.className = "col col-card";
+            card.className = "col col-card p-3 mb-2";
             card.id = `game-${Name}`;
+            card.addEventListener("click", () => {
+              // Redirect to the game details page when the card is clicked
+              window.location.href = `gameDetails.html?name=${Name}`;
+            });
 
             // Create an image element for the card
             const img = document.createElement("img");
@@ -80,7 +97,7 @@
             cardBody.className = "card-body";
 
             // Create a header for the card
-            const cardTitle = document.createElement("h5");
+            const cardTitle = document.createElement("h4");
             cardTitle.className = "card-title";
             cardTitle.textContent = Name || "No Name Available";
 
