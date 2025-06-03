@@ -69,8 +69,29 @@
       </div>
     </nav>
     <h1>Query 6</h1>
-    <div id="gameSection" class="container mt-6" style="margin-top: 1em">
-      <!-- The game section will be populated with cards for each game -->
+    <div class="container mt-6" style="margin-top: 1em">
+      <form action="javascript:void(0);" id="game-form" style="display: grid; row-gap: 1rem; margin-bottom: 1rem;">
+        <div class="form-group">
+            <label for="game-name">Name</label>
+            <input type="text" name="name" id="game-name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="game-description">Description</label>
+            <textarea name="description" id="game-description" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="game-link">Link</label>
+            <input type="text" name="link" id="game-link" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="game-genre">Genre</label>
+            <input type="text" name="genre" id="genre" class="form-control">
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary" style="justify-self: end;">
+      </form>
+      <div id="results">
+
+      </div>
     </div>
     <footer class="bg-light mt-5 py-3">
       <div class="container text-center">
@@ -79,72 +100,75 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Utility function(s) -->
     <script>
-      document.addEventListener("DOMContentLoaded", async () => {
-        const gameSection = document.getElementById("gameSection");
-        let previousRow = gameSection.querySelector(".row");
-        try {
-          // Fetch game list for section
-          const response = await fetch("/index");
-          const games = await response.json();
+        function makeResultTable(json) {
+            if (json.length === 0) throw new Error("Empty json")
 
-          games.forEach((game) => {
-            const { ID, Name, Description, Genre, Preview } = game;
+            // make table
+            const table = document.createElement("table")
+            table.classList.add("table", "table-bordered", "table-striped")
 
-            if (!previousRow || previousRow.children.length >= 4) {
-              // If the previous row is full or doesn't exist, create a new row
-              const newRow = document.createElement("div");
-              newRow.className = "row row-cols-4";
-              gameSection.appendChild(newRow);
-              previousRow = newRow;
+            // make table head
+            const theadRow = table
+                .appendChild(document.createElement("thead"))
+                .appendChild(document.createElement("tr"))
+            for (const key in json[0]) {
+                const cell = theadRow.appendChild(
+                    document.createElement("th")
+                )
+                cell.innerText = key
             }
 
-            // Create a card for each game
-            const card = document.createElement("div");
-            card.className = "col col-card p-3 mb-2";
-            card.id = `game-${Name}`;
-            card.addEventListener("click", () => {
-              // Redirect to the game details page when the card is clicked
-              window.location.href = `game.html?ID=${ID}`;
-            });
+            // make table body
+            const tbody = table.appendChild(document.createElement("tbody"))
+            for (const row of json) {
+                const tr = tbody.appendChild(document.createElement("tr"))
+                for (const value of Object.values(row)) {
+                    const cell = tr.appendChild(
+                        document.createElement("td")
+                    )
+                    cell.innerText = value === null ? 'NULL' : value
+                }
+            }
 
-            // Create an image element for the card
-            const img = document.createElement("img");
-            img.src = Preview || "images/No_Image_Available.jpg";
-            img.className = "card-img-top";
-            img.alt = "No Image Available";
-
-            // Create a card body element for the card
-            const cardBody = document.createElement("div");
-            cardBody.className = "card-body";
-
-            // Create a header for the card
-            const cardTitle = document.createElement("h4");
-            cardTitle.className = "card-title";
-            cardTitle.textContent = Name || "No Name Available";
-
-            // Create a paragraph for the card
-            const cardText = document.createElement("p");
-            cardText.className = "card-text";
-            cardText.textContent =
-              Description.length > 100
-                ? Description.substring(0, 100) + "..."
-                : Description;
-
-            // Append elements to the card body
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardText);
-
-            // Append the image and card body to the card
-            card.appendChild(img);
-            card.appendChild(cardBody);
-
-            // Append the card to the previous row
-            previousRow.appendChild(card);
-          });
-        } catch (error) {
-          console.error("Error fetching games:", error);
+            return table
         }
+
+        function makeErrorMessage(text) {
+            const paragraph = document.createElement("p")
+            paragraph.innerText = text
+
+            paragraph.style.color = "red";
+            
+            return paragraph
+        }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const form = document.getElementById("game-form");
+        const resultTable = document.getElementById("results");
+        
+        form.addEventListener("submit", (evt) => {
+            const data = new FormData(evt.target);
+            const searchParams = new URLSearchParams();
+
+            for (const [key, value] of data.entries()) {
+                searchParams.append(key, value);
+            }
+            
+            fetch("/query6?" + searchParams).then(response => {
+                if (response.status !== 200) {
+                    response.text().then(errorMessage => {
+                        resultTable.replaceChildren(makeErrorMessage(errorMessage));
+                    });
+                    return;
+                }
+                response.json().then(json => {
+                    resultTable.replaceChildren(makeResultTable(json));
+                })
+            });
+        });
       });
     </script>
   </body>

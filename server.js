@@ -22,7 +22,7 @@ app.get("/query2", require("./controllers/query2").getAllGames);
 app.get("/query3", require("./controllers/query3").getAllGames);
 app.get("/query4", require("./controllers/query4").getAllGames);
 app.get("/query5", require("./controllers/query5").getAllGames);
-app.get("/query6", require("./controllers/query6").getAllGames);
+app.get("/query6", require("./controllers/query6").addGame);
 
 // Start the server and log a message indicating the URL.
 app.listen(PORT, () => {
