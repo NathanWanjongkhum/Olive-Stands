@@ -8,6 +8,12 @@ const app = express();
 // Import Controllers
 const indexController = require("./controllers/index");
 const gameController = require("./controllers/game");
+const query1Controller = require("./controllers/query1");
+const query2Controller = require("./controllers/query2");
+const query3Controller = require("./controllers/query3");
+const query4Controller = require("./controllers/query4");
+const query5Controller = require("./controllers/query5");
+const query6Controller = require("./controllers/query6");
 
 // Middleware Setup
 app.use(express.json());
@@ -17,12 +23,12 @@ app.use(express.static("assets"));
 app.get("/index", indexController.getAllGames);
 app.get("/game", gameController.getGame);
 app.get("/game/feedback", gameController.getGameFeedback);
-app.get("/query1", require("./controllers/query1").getAllGames);
-app.get("/query2", require("./controllers/query2").getAllGames);
-app.get("/query3", require("./controllers/query3").getAllGames);
-app.get("/query4", require("./controllers/query4").getAllGames);
-app.get("/query5", require("./controllers/query5").getAllGames);
-app.get("/query6", require("./controllers/query6").addGame);
+app.get("/query1", query1Controller.getAllGenresAboveThreshold);
+app.get("/query2", query2Controller.getAllGames);
+app.get("/query3", query3Controller.getAllGames);
+app.get("/query4", query4Controller.getAllGames);
+app.get("/query5", query5Controller.getAllGames);
+app.get("/query6", query6Controller.addGame);
 
 // Start the server and log a message indicating the URL.
 app.listen(PORT, () => {
