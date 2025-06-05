@@ -19,8 +19,8 @@ const getUsernames = (req, res) => {
   const query = `
     SELECT "U"."Name" AS "Usernames" 
     FROM Users AS "U"
-      JOIN Feedback AS "F" ON "F"."User_ID" = "U"."ID"
-      JOIN Game AS "G" ON "G"."ID" = "F"."Game_ID"
+    JOIN Feedback AS "F" ON "F"."User_ID" = "U"."ID"
+    JOIN Game AS "G" ON "G"."ID" = "F"."Game_ID"
     WHERE "F"."Rating" = 5 AND "G"."Name" = $1
   `;
 
@@ -30,7 +30,6 @@ const getUsernames = (req, res) => {
       console.error("Error fetching usernames:", err);
       res.status(500).json({ error: "Error fetching usernames list" });
     } else {
-      console.log("Query successful, returning results:", results.rows);
       res.json(results.rows);
     }
   });
