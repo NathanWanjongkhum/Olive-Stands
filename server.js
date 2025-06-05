@@ -29,6 +29,7 @@ app.get("/query2/details", query2Controller.getHighestRating);
 app.get("/query3", query3Controller.getGamesByRatingCount);
 app.get("/query4", query4Controller.getReviewsByReviewer);
 app.get("/query5", query5Controller.getAllGames);
+app.get("/query5/details", query5Controller.getUsernames);
 app.get("/query6", query6Controller.addGame);
 
 // Start the server and log a message indicating the URL.
