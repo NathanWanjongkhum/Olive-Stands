@@ -1,7 +1,16 @@
 const db = require("../dbConfig");
 
-const getAllGames = (req, res) => {
-  const query = `SELECT * FROM Game;`;
+const getGamesByRatingCount = (req, res) => {
+  const order = req.query.order === "ASC" ? "ASC" : "DESC";
+  const query = `
+    SELECT
+        "Name",
+        COUNT("Rating") AS "Rating_Count"
+    FROM feedback
+        RIGHT JOIN game ON feedback."Game_ID"=game."ID"
+    GROUP BY "Game_ID", "ID", "Name"   
+    ORDER BY "Rating_Count" ${order};
+  `;
 
   db.query(query, (err, results) => {
     if (err) {
@@ -14,5 +23,5 @@ const getAllGames = (req, res) => {
 };
 
 module.exports = {
-  getAllGames: getAllGames,
+  getGamesByRatingCount: getGamesByRatingCount,
 };

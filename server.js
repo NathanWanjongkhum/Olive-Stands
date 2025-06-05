@@ -26,7 +26,7 @@ app.get("/game/feedback", gameController.getGameFeedback);
 app.get("/query1", query1Controller.getAllGenresAboveThreshold);
 app.get("/query2", query2Controller.getAllGenres);
 app.get("/query2/details", query2Controller.getHighestRating);
-app.get("/query3", query3Controller.getAllGames);
+app.get("/query3", query3Controller.getGamesByRatingCount);
 app.get("/query4", query4Controller.getAllGames);
 app.get("/query5", query5Controller.getAllGames);
 app.get("/query6", query6Controller.addGame);
