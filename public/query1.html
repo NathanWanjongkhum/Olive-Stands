@@ -104,8 +104,12 @@
         // Event listener for the rating range slider
         ratingRange.addEventListener("change", async () => {
           try {
-            const response = await fetch("/query1");
+            const response = await fetch(
+              "/query1?threshold=" + ratingRange.value
+            );
             const genres = await response.json();
+
+            contentSection.innerHTML = ""; // Clear previous results
 
             if (!Array.isArray(genres) || genres.length === 0) {
               const noGenres = document.createElement("p");
