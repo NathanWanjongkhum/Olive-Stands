@@ -68,7 +68,7 @@
         </div>
       </div>
     </nav>
-    <h1 class="text-center">Filter Games by Rating</h1>
+    <h1 class="text-center">Filter Genres by Rating</h1>
     <form
       class="container justify-content-center p-2 mt-3 bg-secondary rounded"
     >
@@ -114,6 +114,7 @@
               return;
             }
 
+            contentSection.replaceChildren([]);
             genres.forEach((genre) => {
               const { Genre } = genre;
               const card = document.createElement("p");
